@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="status">Average fuel prices</string>
+	<string name="diesel">Diesel: %1$s €</string>
+    <string name="extension_name">Benziini</string>
+    <string name="application_name">Dashclock Benziini Extension</string>
+    <string name="extension_info">Displays information about the current average fuel prices in Finland.</string>
+    <string name="petrol95">Petrol: %1$s € (95E)</string>
+    <string name="petrol98">Petrol: %1$s € (98E)</string>
+    
+</resources>
