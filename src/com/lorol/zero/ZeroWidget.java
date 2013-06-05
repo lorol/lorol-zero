@@ -7,6 +7,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
@@ -34,6 +35,8 @@ public class ZeroWidget extends DashClockExtension {
 	 */
 	@Override
 	protected void onUpdateData(int arg0) {
+		
+		boolean allGood = false;
 		
 		ExtensionData edtInformation = new ExtensionData();
 		edtInformation.visible(false);
@@ -74,6 +77,7 @@ public class ZeroWidget extends DashClockExtension {
 				    edtInformation.status(String.format(getString(R.string.status), strev));
 					Log.d("ZeroWidget", "Publishing update");
 					edtInformation.visible(true);
+					allGood = true;
 					Log.d("ZeroWidget", "Done");
 				    
 				} catch (MalformedURLException e) {
@@ -92,7 +96,11 @@ public class ZeroWidget extends DashClockExtension {
 		} else {
 			Log.v("ZeroWidget", "Not connected to the internet");
 		}
-
+		if (!allGood){
+			edtInformation.status("- Tap to check -");
+			edtInformation.visible(true);
+		}
+		edtInformation.clickIntent(new Intent(Intent.EXTRA_INTENT));
 		edtInformation.icon(R.drawable.ic_dashclock);
 		publishUpdate(edtInformation);
 		Log.d("ZeroWidget", "Done");
