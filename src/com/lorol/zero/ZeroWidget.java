@@ -61,7 +61,7 @@ public class ZeroWidget extends DashClockExtension {
 
 					// Read all the text returned by the server
 				    BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-				    String str, strev = "---";
+				    String str, strev = "---*";
 				    strev = in.readLine();
 				    int i = 0;
 					while (((str = in.readLine()) != null) && (i < 5)){
@@ -97,10 +97,11 @@ public class ZeroWidget extends DashClockExtension {
 			Log.v("ZeroWidget", "Not connected to the internet");
 		}
 		if (!allGood){
-			edtInformation.status("- Tap to check -");
+			edtInformation.status("Check ---*");
 			edtInformation.visible(true);
 		}
-		edtInformation.clickIntent(new Intent(Intent.EXTRA_INTENT));
+//		edtInformation.clickIntent(new Intent(Intent.EXTRA_INTENT));
+		edtInformation.clickIntent(null);
 		edtInformation.icon(R.drawable.ic_dashclock);
 		publishUpdate(edtInformation);
 		Log.d("ZeroWidget", "Done");
