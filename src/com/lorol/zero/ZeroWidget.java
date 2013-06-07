@@ -3,11 +3,9 @@ package com.lorol.zero;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
@@ -79,28 +77,23 @@ public class ZeroWidget extends DashClockExtension {
 					edtInformation.visible(true);
 					allGood = true;
 					Log.d("ZeroWidget", "Done");
-				    
-				} catch (MalformedURLException e) {
-					Log.e("ZeroWidget", "URL problems", e);
 					
 				} catch (IOException e) {
 					Log.e("ZeroWidget", "Unable to connect to website", e);
 				}
 				
-
 			} catch (IOException e) {
 				Log.e("ZeroWidget", "Unable to connect", e);
-
 			}
 
 		} else {
 			Log.v("ZeroWidget", "Not connected to the internet");
 		}
 		if (!allGood){
-			edtInformation.status("Check ---*");
+			edtInformation.status("Touch to check");
 			edtInformation.visible(true);
 		}
-//		edtInformation.clickIntent(new Intent(Intent.EXTRA_INTENT));
+
 		edtInformation.clickIntent(null);
 		edtInformation.icon(R.drawable.ic_dashclock);
 		publishUpdate(edtInformation);
@@ -115,8 +108,6 @@ public class ZeroWidget extends DashClockExtension {
 
 		super.onDestroy();
 		Log.d("ZeroWidget", "Destroyed");
-//
-
 	}
-
+	
 }
